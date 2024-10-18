@@ -1,7 +1,15 @@
+//Sorted map is implemented as a self-balancing binary search tree (BST), ex- Red-Black Tree.
+//Time complexity - O(log n)
+//In map, Keys are sorted in increasing order.
 #include <iostream>
 #include <map>
 using namespace std;
 
+void print(map<string, int> studentMarks){
+     for(auto i: studentMarks){
+        cout << i.first << ": " << i.second << endl;
+    }
+}
 int main(){
 
     //create a map
@@ -13,20 +21,14 @@ int main(){
     studentMarks["Alice"] = 78;
 
     //display key-value pairs
-    for(auto i: studentMarks){
-        cout << i.first << ": " << i.second << endl;
-    }
+    print(studentMarks);
     // Alice: 78
     // Jane: 92
     // John: 85
 
     //insert key-value pairs
     studentMarks["Bob"] = 95;
-
-    //display key-value pairs
-    for(auto i: studentMarks){
-        cout << i.first << ": " << i.second << endl;
-    }
+    print(studentMarks);
     // Alice: 78
     // Bob: 95
     // Jane: 92
@@ -40,7 +42,12 @@ int main(){
         cout<<"Bob's marks: "<<studentMarks["Bob"]<<endl; // Bob's marks: 95
     }else{
         cout<<"Bob not found"<<endl;
-    }
+    } 
 
-    
+    //delete key-value pair in map
+    studentMarks.erase("Alice");
+    print(studentMarks);
+    // Bob: 95
+    // Jane: 92
+    // John: 85 
 }
